@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.console;
 
+import com.sun.jdi.Value;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -14,12 +15,22 @@ import java.util.List;
 /**
  * Created by LaunchCode
  */
-public class JobData {
-
+    public class JobData<jobs, findByValue> {
     private static final String DATA_FILE = "resources/job_data.csv";
     private static Boolean isDataLoaded = false;
-
-    private static ArrayList<HashMap<String, String>> allJobs;
+    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+        // load data, if not already loaded
+        loadData();
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        for (HashMap<String, String> row : allJobs) {
+            String aValue = row.get(value);
+            if (aValue.contains(value))
+            {
+                jobs.add(row);
+            }
+        }
+        return jobs;
+    }
 
     /**
      * Fetch list of all values from loaded data,
@@ -28,23 +39,27 @@ public class JobData {
      * @param field The column to retrieve values from
      * @return List of all of the values of the given field
      */
-    public static ArrayList<String> findAll(String field) {
 
-        // load data, if not already loaded
-        loadData();
 
-        ArrayList<String> values = new ArrayList<>();
 
-        for (HashMap<String, String> row : allJobs) {
-            String aValue = row.get(field);
 
-            if (!values.contains(aValue)) {
-                values.add(aValue);
+    public static ArrayList<String> findAll(String field){
+
+            // load data, if not already loaded
+            loadData ();
+
+            ArrayList<String> values = new ArrayList<> ();
+
+            for (HashMap<String, String> row : allJobs) {
+                String aValue = row.get ( field );
+
+                if (!values.contains ( aValue )) {
+                    values.add ( aValue );
+                }
             }
-        }
 
-        return values;
-    }
+            return values;
+        }
 
     public static ArrayList<HashMap<String, String>> findAll() {
 
@@ -83,11 +98,23 @@ public class JobData {
 
         return jobs;
     }
+    ///CAPITALIZE
+   // private class allJobs {
+      // private void main(String args[]) {
+            //uppercase
+          // String str1 = "HELLO";
+            //lowercase
+         //  String str2 = "hello";
+
+         //  System.out.println(str1.compareTo(str2));
+        //   System.out.println(str1.compareToIgnoreCase(str2));
+      // }
+   //}
 
     /**
      * Read in data from a CSV file and store it in a list
      */
-    private static void loadData() {
+    private static void loadData(){
 
         // Only load data once
         if (isDataLoaded) {
@@ -125,4 +152,4 @@ public class JobData {
         }
     }
 
-}
+    }

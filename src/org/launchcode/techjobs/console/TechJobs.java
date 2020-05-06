@@ -2,16 +2,15 @@ package org.launchcode.techjobs.console;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
-/**
- * Created by LaunchCode
- */
-public class TechJobs {
+public class TechJobs<allJobs> {
 
     private static Scanner in = new Scanner(System.in);
+    private static Object HashMap;
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -103,7 +102,7 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
@@ -111,6 +110,35 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        // loop over someJobs
+        for (HashMap<String, String> Job : someJobs) {
+            // loop over HashMap print out key and value pair of hashmap
+            for (Map.Entry<String, String> jobProp : Job.entrySet()) {
+                System.out.println(jobProp.getKey() + ": " + jobProp.getValue());
+            }
+
+            // print out a new line to separate the jobs
+
+            System.out.println("\n");
+        }
     }
 }
+
+
+
+
+//case sensitive
+       // private static allJobs {
+       // private static void main(String [] allJobs[]) {
+            /* uppercase */
+        //String str1 = "HELLO";
+            /* lowercase */
+       // String str2 = "hello";
+
+       // System.out.println(str1.compareTo(str2));
+      //  System.out.println(str1.compareToIgnoreCase(str2));
+   // }
+//};
+//.equals()
+//str.toLowerCase()
+      //  str.toLowerCase()
