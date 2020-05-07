@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by LaunchCode
+ * Created by LaunchCode,
  */
 public class JobData<jobs, findByValue> {
     private static final String DATA_FILE = "resources/job_data.csv";
