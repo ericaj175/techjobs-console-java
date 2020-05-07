@@ -15,20 +15,26 @@ import java.util.List;
 /**
  * Created by LaunchCode
  */
-    public class JobData<jobs, findByValue> {
+public class JobData<jobs, findByValue> {
     private static final String DATA_FILE = "resources/job_data.csv";
     private static Boolean isDataLoaded = false;
+    private static ArrayList<HashMap<String, String>> allJobs;
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
+
+
         // load data, if not already loaded
         loadData();
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
         for (HashMap<String, String> row : allJobs) {
-            String aValue = row.get(value);
-            if (aValue.contains(value))
-            {
-                jobs.add(row);
+            for(String aValue: row.values()){
+                if(aValue.toLowerCase().contains(value.toLowerCase()) ){
+                    jobs.add(row);
+                }
             }
+
         }
+
         return jobs;
     }
 
@@ -90,8 +96,8 @@ import java.util.List;
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
+            if(aValue.toLowerCase().contains(value.toLowerCase()) ){
 
-            if (aValue.contains(value)) {
                 jobs.add(row);
             }
         }

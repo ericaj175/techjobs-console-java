@@ -1,0 +1,16 @@
+Index: src/org/launchcode/techjobs/console/JobData.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/org/launchcode/techjobs/console/JobData.java	(date 1588829918226)
++++ src/org/launchcode/techjobs/console/JobData.java	(revision dd6da3b2da0e7a9b946f70c8fb88a43bf74b3817)
+@@ -13,7 +13,7 @@
+ import java.util.List;
+ 
+ /**
+- * Created by LaunchCode
++ * Created by LaunchCode..
+  */
+ public class JobData<jobs, findByValue> {
+     private static final String DATA_FILE = "resources/job_data.csv";
